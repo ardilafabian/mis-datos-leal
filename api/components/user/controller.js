@@ -11,9 +11,9 @@ module.exports = function(injectedStore) {
     }
 
     async function registerUser(data) {
-        // Verify if the user exists
         userId = md5(data.email);
 
+        // Verify if the user exists
         const userExist = await store.query(TABLA, {
             id:userId
         });
@@ -37,7 +37,7 @@ module.exports = function(injectedStore) {
             password: data.password
         });
 
-        return store.registerUser(TABLA, user);
+        return store.insert(TABLA, user);
     }
 
     return {

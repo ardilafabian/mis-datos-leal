@@ -7,12 +7,7 @@ module.exports = function(injectedStore) {
         return store.list(TABLA);
     }
 
-    function insert(data) {
-        
-    }
-
     return {
         list,
-        insert
     }
 }
