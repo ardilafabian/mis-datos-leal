@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/fardila1011/mis-datos-leal#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "md5": "^2.2.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2"
   }

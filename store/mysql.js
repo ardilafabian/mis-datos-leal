@@ -45,6 +45,16 @@ function list(table) {
     })
 }
 
+function registerUser(table, data) {
+    return new Promise((resolve, reject) => {
+        connection.query(`INSERT INTO ${table} SET ?`, data, (err, res) => {
+            if (err) return reject(err);
+            resolve(res);
+        });
+    });
+}
+
 module.exports = {
-    list
+    list,
+    registerUser
 }
