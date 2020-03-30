@@ -12,14 +12,8 @@ function verify(token) {
 }
 
 const check = {
-    own: function(req, owner) {
-        const decoded = decodeHeader(req);
-        console.log(decoded);
-
-        // Verifica que sea el propietario de la info
-        if (decoded.id !== owner) {
-            throw error('Acceso no permitido.', 401);
-        }
+    logged: function(req) {
+        decodeHeader(req);
     }
 }
 
