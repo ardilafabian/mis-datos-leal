@@ -1,4 +1,4 @@
-const TABLA = 'user';
+const TABLA = 'transaction';
 
 module.exports = function(injectedStore) {
     let store = injectedStore;

@@ -38,7 +38,7 @@ handleCon();
 
 function list(table) {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM ${table}`, (error, data) => {
+        connection.query(`SELECT * FROM ${table} ORDER BY created_date DESC`, (error, data) => {
             if (error) return reject(error);
             resolve(data);
         });
