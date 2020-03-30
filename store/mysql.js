@@ -68,7 +68,11 @@ function query(table, query) {
         connection.query(`SELECT * FROM ${table} WHERE ?`, query, (err, res) => {
             console.log(res);
             if (err) return reject(err);
-            resolve(res[0] || null);
+            if (res.length > 0) {
+                resolve(JSON.parse(JSON.stringify(res[0])));
+            } else {
+                resolve(null);
+            }
         })
     })
 }
