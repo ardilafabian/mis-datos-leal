@@ -13,6 +13,8 @@ const dbconf = {
 let connection;
 
 function handleCon() {
+    connection = mysql.createConnection(dbconf);
+
     connection.connect(err => {
         if (err) {
             console.error('[DB error]', err);
