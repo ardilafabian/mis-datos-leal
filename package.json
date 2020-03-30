@@ -1,16 +1,19 @@
 {
-  "name": "mis-datos-leal",
-  "version": "0.0.0",
-  "private": true,
+  "name": "mis-datos",
+  "version": "1.0.0",
+  "description": "Plataforma que muestra las transacciones y los puntos que el usuario tiene.",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "hbs": "~4.0.4",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fardila1011/mis-datos-leal.git"
+  },
+  "author": "Fabián Ardila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fardila1011/mis-datos-leal/issues"
+  },
+  "homepage": "https://github.com/fardila1011/mis-datos-leal#readme"
 }
