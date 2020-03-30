@@ -1,4 +1,5 @@
 const md5 = require('md5');
+const auth = require('../auth');
 
 const TABLA = 'user';
 
@@ -10,14 +11,13 @@ module.exports = function(injectedStore) {
     }
 
     async function registerUser(data) {
-        // TODO: verify if the user doesn't exist
+        // Verify if the user exists
         userId = md5(data.email);
 
         const userExist = await store.query(TABLA, {
             id:userId
         });
-        console.log("------>");
-        console.log(userExist);
+
         if (userExist) {
             throw new Error('Usuario ya existe.');
         }
@@ -30,6 +30,12 @@ module.exports = function(injectedStore) {
             created_date: new Date(),
             birth_date: data.birth_date
         }
+
+        await auth.insert({
+            id: user.id,
+            email: user.email,
+            password: data.password
+        });
 
         return store.registerUser(TABLA, user);
     }
