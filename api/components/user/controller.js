@@ -6,10 +6,6 @@ const TABLA = 'user';
 module.exports = function(injectedStore) {
     let store = injectedStore;
 
-    function list() {
-        return store.list(TABLA);
-    }
-
     async function registerUser(data) {
         userId = md5(data.email);
 
@@ -41,7 +37,6 @@ module.exports = function(injectedStore) {
     }
 
     return {
-        list,
         registerUser
     }
 }
