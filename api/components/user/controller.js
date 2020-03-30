@@ -9,11 +9,21 @@ module.exports = function(injectedStore) {
         return store.list(TABLA);
     }
 
-    function registerUser(data) {
+    async function registerUser(data) {
         // TODO: verify if the user doesn't exist
+        userId = md5(data.email);
+
+        const userExist = await store.query(TABLA, {
+            id:userId
+        });
+        console.log("------>");
+        console.log(userExist);
+        if (userExist) {
+            throw new Error('Usuario ya existe.');
+        }
 
         const user = {
-            id: md5(data.email),
+            id: userId,
             name: data.name,
             last_name: data.lastName,
             email: data.email,

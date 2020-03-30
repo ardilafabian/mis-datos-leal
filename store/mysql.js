@@ -54,7 +54,18 @@ function registerUser(table, data) {
     });
 }
 
+function query(table, query) {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM ${table} WHERE ?`, query, (err, res) => {
+            console.log(res);
+            if (err) return reject(err);
+            resolve(res[0] || null);
+        })
+    })
+}
+
 module.exports = {
     list,
-    registerUser
+    registerUser,
+    query
 }
