@@ -41,8 +41,13 @@ module.exports = function(injectedStore) {
         return store.getUserTransactions(userId);
     }
 
+    function getPoints(userId) {
+        return store.getUserPoints(userId);
+    }
+
     return {
         registerUser,
-        getTransactionsHistory
+        getTransactionsHistory,
+        getPoints,
     }
 }

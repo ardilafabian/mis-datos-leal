@@ -77,9 +77,25 @@ function getUserTransactions(userId) {
     });
 }
 
+function getUserPoints(userId) {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT SUM(points) as points FROM transaction
+                            WHERE status = 0 AND user_id = '${userId}'
+                            GROUP BY user_id`, (err, res) => {
+                                if (err) return reject(err);
+                                if (res.length > 0) {
+                                    resolve(JSON.parse(JSON.stringify(res[0])));
+                                } else {
+                                    resolve(null);
+                                }
+                            });
+    });
+}
+
 module.exports = {
     list,
     query,
     insert,
-    getUserTransactions
+    getUserTransactions,
+    getUserPoints
 }

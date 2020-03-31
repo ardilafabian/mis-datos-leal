@@ -9,6 +9,7 @@ const router = express.Router();
 // Routes
 router.post('/', register);
 router.get('/transactions', secure('getInfo'), getTransactionsHistory);
+router.get('/points', secure('getInfo'), getPoints);
 
 // Internal functions
 
@@ -24,6 +25,14 @@ function getTransactionsHistory(req, res, next) {
     Controller.getTransactionsHistory(req.user.id)
         .then(transactions => {
             response.success(req, res, transactions, 200);
+        })
+        .catch(next);
+}
+
+function getPoints(req, res, next) {
+    Controller.getPoints(req.user.id)
+        .then(points => {
+            response.success(req, res, points, 200);
         })
         .catch(next);
 }
