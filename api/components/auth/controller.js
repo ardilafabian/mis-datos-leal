@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const auth = require('../../../auth');
+const error = require('../../../utils/error');
 
 const TABLA = 'auth';
 
@@ -11,7 +12,7 @@ module.exports = function(injectedStore) {
 
         if (!data) {
             // Throw error when the user doesn't exist
-            throw new Error('Información inválida.');
+            throw error('Información inválida.', 400);
         }
         console.log("--------");
         console.log(data);
@@ -21,7 +22,7 @@ module.exports = function(injectedStore) {
                     // Generate token
                     return auth.sign(data);
                 } else{
-                    throw new Error('Información inválida.');
+                    throw error('Información inválida.', 400);
                 }
             });
     }

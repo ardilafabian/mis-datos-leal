@@ -1,5 +1,6 @@
 const md5 = require('md5');
 const auth = require('../auth');
+const error = require('../../../utils/error');
 
 const TABLA = 'user';
 
@@ -15,7 +16,7 @@ module.exports = function(injectedStore) {
         });
 
         if (userExist) {
-            throw new Error('Usuario ya existe.');
+            throw error('Usuario ya existe.', 400);
         }
 
         const user = {

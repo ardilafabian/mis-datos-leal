@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const error = require('../utils/error');
 
 const secret = config.jwt.secret;
 
@@ -19,11 +20,11 @@ const check = {
 
 function getToken(auth) {
     if(!auth) {
-        throw new Error('No existe token de seguridad.');
+        throw error('No existe token de seguridad.', 401);
     } 
 
     if (auth.indexOf('Bearer ') === -1) {
-        throw new Error('Formato de token de seguridad inválido.');
+        throw error('Formato de token de seguridad inválido.', 401);
     }
 
     let token = auth.replace('Bearer ', '');
