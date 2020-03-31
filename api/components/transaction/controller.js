@@ -21,8 +21,13 @@ module.exports = function(injectedStore) {
         return store.insert(TABLA, transaction);
     }
 
+    function deactivate(transactionId) {
+        return store.deactivateTransaction(TABLA, transactionId);
+    }
+
     return {
         list,
         register,
+        deactivate
     }
 }
