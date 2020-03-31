@@ -92,9 +92,9 @@ function getUserPoints(userId) {
     });
 }
 
-function deactivateTransaction(table, transId) {
+function deactivateTransaction(transId) {
     return new Promise((resolve, reject) => {
-        connection.query(`UPDATE ${table} SET status=1 WHERE id='${transId}'`, (err, res) => {
+        connection.query(`UPDATE transaction SET status=1 WHERE id='${transId}'`, (err, res) => {
             if (err) return reject(err);
             resolve(res);
         });
