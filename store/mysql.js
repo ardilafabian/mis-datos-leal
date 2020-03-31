@@ -70,7 +70,7 @@ function query(table, query) {
 
 function getUserTransactions(userId) {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM transaction WHERE user_id = '${userId}'`, (err, res) => {
+        connection.query(`SELECT * FROM transaction WHERE user_id = '${userId}' ORDER BY created_date DESC`, (err, res) => {
             if (err) return reject(err);
             resolve(res);
         });
