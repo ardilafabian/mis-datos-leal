@@ -31,7 +31,7 @@ function getToken(auth) {
     return token;
 }
 
-function decodeHeader() {
+function decodeHeader(req) {
     // Obtiene la autorización del header
     const authorization = req.headers.authorization || '';
 

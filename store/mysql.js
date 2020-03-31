@@ -64,12 +64,22 @@ function query(table, query) {
             } else {
                 resolve(null);
             }
-        })
-    })
+        });
+    });
+}
+
+function getUserTransactions(userId) {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM transaction WHERE user_id = '${userId}'`, (err, res) => {
+            if (err) return reject(err);
+            resolve(res);
+        });
+    });
 }
 
 module.exports = {
     list,
     query,
-    insert
+    insert,
+    getUserTransactions
 }

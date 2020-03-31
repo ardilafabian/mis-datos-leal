@@ -37,7 +37,12 @@ module.exports = function(injectedStore) {
         return store.insert(TABLA, user);
     }
 
+    function getTransactionsHistory(userId) {
+        return store.getUserTransactions(userId);
+    }
+
     return {
-        registerUser
+        registerUser,
+        getTransactionsHistory
     }
 }
