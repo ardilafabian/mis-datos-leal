@@ -1,4 +1,5 @@
 const {nanoid} = require('nanoid');
+const formatDate = require('../../../utils/tools');
 
 const TABLA = 'transaction';
 
@@ -12,7 +13,7 @@ module.exports = function(injectedStore) {
     function register(userId, data) {
         const transaction = {
             id: nanoid(),
-            created_date: new Date(),
+            created_date: formatDate(new Date()),
             value: data.value,
             points: data.points,
             status: 0, // Por defecto al crear transacción tiene estado 0 -> activa
@@ -22,7 +23,7 @@ module.exports = function(injectedStore) {
     }
 
     function deactivate(transactionId) {
-        return store.deactivateTransaction(TABLA, transactionId);
+        return store.deactivateTransaction(transactionId);
     }
 
     return {

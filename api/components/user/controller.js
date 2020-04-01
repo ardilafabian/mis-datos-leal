@@ -1,6 +1,7 @@
 const md5 = require('md5');
 const auth = require('../auth');
 const error = require('../../../utils/error');
+const formatDate =  require('../../../utils/tools');
 
 const TABLA = 'user';
 
@@ -24,7 +25,7 @@ module.exports = function(injectedStore) {
             name: data.name,
             last_name: data.lastName,
             email: data.email,
-            created_date: new Date(),
+            created_date: formatDate(new Date()),
             birth_date: data.birth_date
         }
 
