@@ -1,13 +1,12 @@
-const json2xls = require('json2xls');
 
 module.exports = function(injectedStore) {
     let store = injectedStore;
 
-    function exportUserTransactions(userId) {
+    function userTransactions(userId) {
         return store.getUserTransactions(userId);
     }
 
     return {
-        exportUserTransactions,
+        userTransactions,
     }
 }

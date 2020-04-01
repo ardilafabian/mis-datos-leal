@@ -1,6 +1,8 @@
 const express = require('express');
 
 const secure = require('./secure');
+const json2xls = require('json2xls');
+const fs = require('fs');
 const response = require('../../../network/response');
 const Controller = require('./index');
 
@@ -11,9 +13,12 @@ router.get('/user/:id/transactions', secure('export'), exportUserTransactions);
 
 // Internal functions
 function exportUserTransactions(req, res, next) {
-    Controller.exportUserTransactions(req.params.id)
-        .then((trans) => {
-            response.success(req, res, trans, 200);
+    Controller.userTransactions(req.params.id)
+        .then(result => {
+            const data = json2xls(result);
+            fs.writeFileSync('./export/files/transacciones.xlsx', data, 'binary');
+
+            response.success(req, res, result, 200);
         })
         .catch(next);
 }
