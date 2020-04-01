@@ -5,6 +5,9 @@ module.exports = {
     transaction: {
         port: process.env.TRANSACTION_PORT || 3002,
     },
+    export: {
+        port: process.env.EXPORT_PORT || 3003,
+    },
     jwt: {
         secret: process.env.JWT_SECRET || 'TODOscret'
     },
