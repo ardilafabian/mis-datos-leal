@@ -1,0 +1,35 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/index.js",
+            "use": "@now/node"
+        },
+        {
+            "src": "transaction/index.js",
+            "use": "@now/node"
+        },
+        {
+            "src": "export/index.js",
+            "use": "@now/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/user(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/auth(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/transaction(.*)",
+            "dest": "/transaction/index.js"
+        },
+        {
+            "src": "/export(.*)",
+            "dest": "/export/index.js"
+        }
+    ]
+}
