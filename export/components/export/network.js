@@ -16,7 +16,7 @@ function exportUserTransactions(req, res, next) {
     Controller.userTransactions(req.params.id)
         .then(result => {
             const data = json2xls(result);
-            fs.writeFileSync('../../files/transacciones.xlsx', data, 'binary');
+            fs.writeFileSync('./export/files/transacciones.xlsx', data, 'binary');
 
             response.success(req, res, result, 200);
         })
