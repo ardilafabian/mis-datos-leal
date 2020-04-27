@@ -1,4 +1,5 @@
-const store = require('../../../mysql/store/remote-mysql');
+//const store = require('../../../mysql/store/remote-mysql');
+const config = require('../../../config');
 
 let store;
 if (config.remoteDB === true) {
